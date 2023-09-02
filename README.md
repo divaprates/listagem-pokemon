@@ -15,7 +15,7 @@ Criação de uma Pokedex utilizando HTML, JAVASCRIPT e CSS.
 
 <br>
 
-
+![pokedex](/assets/images/image.png)
 ### Executar:
 
 - index.html
