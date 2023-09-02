@@ -20,18 +20,16 @@ function convertPokemonToHTML(pokemon) {
 
 const pokemonList = document.getElementById("pokemonList")
 
-fetch(url)
-    .then(response => response.json())
-    .then(jsonBody => jsonBody.results)
-    .then(pokemons => {
+
+pokeApi.getPokemons().then(pokemons => {
+    const listItems = []
 
         pokemons.forEach(pokemon => {
 
             convertPokemonToHTML(pokemon)
-            pokemonList.innerHTML += convertPokemonToHTML(pokemon)
+            listItems.push(convertPokemonToHTML(pokemon))
 
         });
 
-    })
-    .catch(error => console.log(error));
+    });
 
