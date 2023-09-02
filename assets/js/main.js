@@ -1,21 +1,17 @@
-const offset = 0;
-const limit = 10;
-const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
-
-function convertPokemonsTypesToLi(pokemonTypes){
+function convertPokemonsTypesToLi(pokemonTypes, type){
     return pokemonTypes.map(types => {
-        return `<li class="type">${types}</li>`
+        return `<li class="type ${type}">${types}</li>`
     })
 }
 
 function convertPokemonToHTML(pokemon) {
     return `
-        <li class="pokemon">
+        <li class="pokemon ${pokemon.type}">
             <span class="number">${pokemon.order}</span>
             <span class="name">${pokemon.name}</span>
             <div class="detail">
                 <ol class="types">
-                    ${convertPokemonsTypesToLi(pokemon.types).join('')}
+                    ${convertPokemonsTypesToLi(pokemon.types, pokemon.type).join('')}
                 </ol>
                 <img src="${pokemon.photo}" alt="${pokemon.name}">
             </div>
