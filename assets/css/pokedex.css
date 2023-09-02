@@ -223,15 +223,36 @@
 .description .text {
     display: flex;
     flex-direction: row;
+    margin: 0.25rem;
 }
 
 .description label {
-    width: 30%;
+    width: 40%;
     margin: 0.25rem;
 }
 
 .description spam {
     color: #141414;
+}
+
+
+
+/* Botão que exibe os detalhes do pokemon */
+.detailBt {
+    background-color: transparent; /* Torna o botão transparente */
+    color: white; /* Define a cor do texto como branca */
+    border: none; /* Remove a borda padrão do botão */
+    /* height: 30px; */
+    width: 80px;
+    border-radius: 30px; /* Torna o botão redondo definindo o raio de borda */
+    box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra à direita */
+    padding: 10px 20px; /* Define o espaçamento interno do botão */
+    cursor: pointer; /* Altera o cursor para indicar que é interativo */
+}
+
+/* Estilizar o botão quando o mouse passar por cima (hover) */
+.detailBt:hover {
+  opacity: 0.8; /* Reduz a opacidade ao passar o mouse por cima */
 }
 
 /* Modal */
@@ -250,27 +271,13 @@
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
+
   /* Modal Content */
   .modal-content {
-    background-color: #fefefe;
+    /* background-color: #fefefe; */
     margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    /* padding: 20px; */
+    /* border: 1px solid #888; */
+    width: 340px;
   }
   
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }

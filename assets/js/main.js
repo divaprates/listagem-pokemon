@@ -21,6 +21,7 @@ function convertPokemonToHTML(pokemon) {
                 </ol>
                 <img src="${pokemon.photo}" alt="${pokemon.name}">
             </div>
+            <button id="${pokemon.order}" class="detailBt" onclick="openModalDetail('${pokemon.id}')">Detail</button>
         </li>
     `
 }
@@ -48,3 +49,86 @@ loadingMoreButton.addEventListener('click', () => {
 })
 
 
+// modal:
+var modal = document.getElementById("myModal");
+
+function openModalDetail(id) {
+    pokeApi.getPokemon(id)
+        .then((p) => {
+            modal.innerHTML = convertPokemonDetailToHTML(p)
+        })
+        .then(() => {
+            modal.style.display = "block";
+        });
+}
+  
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+function convertPokemonDetailToHTML(pokemon) {
+    return `
+        <div class="pokemonDetail modal-content ${pokemon.type}">
+            
+        <div class="pokemon">
+            <span class="name">${pokemon.name}</span>
+            <span class="number">${pokemon.order}</span>
+            <div class="detail">
+                <ol class="types">
+                    ${convertPokemonsTypesToLi(pokemon.types, pokemon.type).join('')}
+                </ol>
+            </div>
+
+            <div class="detail detailImg">
+                <img src="${pokemon.photo}"
+                    alt="${pokemon.name}">
+            </div>
+        </div>
+
+        <div class="description">
+            <p><spam>About</spam></p>
+
+            <div class="text">
+                <label>Species</label> 
+                <spam>${pokemon.species}</spam>
+            </div>
+            <div class="text">
+                <label>Abilities</label>
+                <spam>${pokemon.abilities}</spam>
+            </div>
+            <div class="text">
+                <label>Height</label> 
+                <spam>${pokemon.height}</spam>
+            </div>
+            <div class="text">
+                <label>Weight</label>
+                <spam>${pokemon.weight}</spam>
+            </div>
+            <div class="text">
+                <label>Base Experience</label> 
+                <spam>${pokemon.baseExperience}</spam>
+            </div>
+
+
+            <p><spam>Base Stats</spam></p>
+
+            <div class="text">
+                <label>Attack</label> 
+                <spam>${pokemon.hp}</spam>
+            </div>
+            <div class="text">
+                <label>Attack</label> 
+                <spam>${pokemon.attack}</spam>
+            </div>
+            <div class="text">
+                <label>Defese</label> 
+                <spam>${pokemon.defese}</spam>
+            </div>
+            
+        </div>
+    </div>
+    `
+}
